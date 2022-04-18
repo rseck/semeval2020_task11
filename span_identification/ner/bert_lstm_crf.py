@@ -118,7 +118,7 @@ class BertLstmCrf(nn.Module):
         )
         sequence_output = bert_outputs[1]
 
-        #self.lstm IS None
+        #self.lstm is None
         if self.lstm is not None:
             hidden = self.rand_init_hidden(batch_size)
             if kwargs["input_ids"].is_cuda:
@@ -126,20 +126,29 @@ class BertLstmCrf(nn.Module):
             sequence_output, hidden = self.lstm(sequence_output, hidden)
             sequence_output = sequence_output.contiguous().view(-1, self.hidden_dim * 2)
             sequence_output = self.output_dropout(sequence_output)
+            
             sequence_output = self.liner(sequence_output)
 
         #out = self.liner(sequence_output)
         out = sequence_output
-
+        print('sequence_output')
+        print(sequence_output.shape)
+        print(sequence_output)
         logits = out.contiguous().view(batch_size, seq_length, -1)
+        print('logits')
+        print(logits.shape)
+        print(logits)
         
         clear_logits, clear_labels, clear_mask = self.clear_subtokens(logits, kwargs['labels'], kwargs["attention_mask"])
 
         print('clear_logits')
+        print(clear_logits.shape)
         print(clear_logits)
         print('clear_labels')
+        print(clear_labels.shape)
         print(clear_labels)
         print('clear_mask')
+        print(clear_mask.shape)
         print(clear_mask)
         
         """
@@ -158,7 +167,6 @@ class BertLstmCrf(nn.Module):
         predicted_tags = cast(List[List[int]], [x[0][0] for x in best_paths])
         
         if kwargs.get("labels") is not None:
-            print("kwargs.get(labels) is indeed not None")
             labels = kwargs.get("labels").cpu()
             #log_likelihood = self.crf(logits, kwargs.get("labels"), kwargs["attention_mask"])
             log_likelihood = self.crf(clear_logits, clear_labels, clear_mask)

@@ -314,6 +314,9 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
                                                 pad_token_segment_id=4 if args.model_type in ["xlnet"] else 0,
                                                 pad_token_label_id=pad_token_label_id
                                                 )
+        logger.info("importing NE and POS embeddings from pickle file at %s",
+                    os.path.join(args.data_dir, 'embeddings', files[mode]))
+        embeddings = pickle.load(open(os.path.join(args.data_dir, 'embeddings', mode+".p"), "rb"))
         if args.local_rank in [-1, 0]:
             logger.info("Saving features into cached file %s", cached_features_file)
             torch.save(features, cached_features_file)
@@ -327,7 +330,35 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
     all_segment_ids = torch.tensor([f.segment_ids for f in features], dtype=torch.long)
     all_label_ids = torch.tensor([f.label_ids for f in features], dtype=torch.long)
 
-    dataset = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids)
+    print('len(embeddings) == len(features)')
+    print(len(embeddings) == len(features))
+    num_sent = len(embeddings)
+    sent_len = len(embeddings[0][0])
+    vec_dim = embeddings[0][0][0].shape[0]
+    all_ner_embeddings = torch.Tensor(num_sent, sent_len, vec_dim)
+    all_pos_embeddings = torch.Tensor(num_sent, sent_len, vec_dim)
+
+    ner_sentences_arr = []
+    pos_sentences_arr = []
+    for embed in embeddings:
+        ner_sent_embed = embed[0]
+        pos_sent_embed = embed[1]
+
+        ner_sent_arr = [torch.unsqueeze(word, 0) for word in ner_sent_embed]
+        ner_sent_tensor = torch.Tensor(sent_len, vec_dim)
+        torch.cat(ner_sent_arr, out=ner_sent_tensor)
+        ner_sentences_arr.append(torch.unsqueeze(ner_sent_tensor,0))
+
+        pos_sent_arr = [torch.unsqueeze(word, 0) for word in pos_sent_embed]
+        pos_sent_tensor = torch.Tensor(sent_len, vec_dim)
+        torch.cat(pos_sent_arr, out=pos_sent_tensor)
+        pos_sentences_arr.append(torch.unsqueeze(pos_sent_tensor, 0))
+
+    torch.cat(ner_sentences_arr, out=all_ner_embeddings)
+    torch.cat(pos_sentences_arr, out=all_pos_embeddings)
+
+    dataset = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids,
+                            all_ner_embeddings, all_pos_embeddings)
     return dataset
 
 

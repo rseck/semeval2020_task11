@@ -181,9 +181,9 @@ class BertLstmCrf(nn.Module):
         out = self.fc1(full_input)
         out = self.non_linear(out)
         out = self.fc2(out)
-        print('out')
-        print(out.shape)
-        print(out)
+        # print('out')
+        # print(out.shape)
+        # print(out)
         # out = sequence_output
         # print('sequence_output')
         # print(sequence_output.shape)
@@ -222,7 +222,7 @@ class BertLstmCrf(nn.Module):
         predicted_tags = cast(List[List[int]], [x[0][0] for x in best_paths])
 
         if kwargs.get("labels") is not None:
-            print("kwargs.get(labels) is indeed not None")
+            # print("kwargs.get(labels) is indeed not None")
             labels = kwargs.get("labels").cpu()
             # log_likelihood = self.crf(logits, kwargs.get("labels"), kwargs["attention_mask"])
             log_likelihood = self.crf(clear_logits, clear_labels, clear_mask)

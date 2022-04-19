@@ -353,6 +353,9 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
         pos_sent_tensor = torch.Tensor(sent_len, vec_dim)
         torch.cat(pos_sent_arr, out=pos_sent_tensor)
         pos_sentences_arr.append(torch.unsqueeze(pos_sent_tensor, 0))
+        print('pos_sent_tensor')
+        print(pos_sent_tensor.get_device())
+        print(pos_sent_tensor)
 
     torch.cat(ner_sentences_arr, out=all_ner_embeddings)
     torch.cat(pos_sentences_arr, out=all_pos_embeddings)

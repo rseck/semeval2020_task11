@@ -76,6 +76,10 @@ class BertLstmCrf(nn.Module):
 
         self.mean_pooling_layer = nn.AdaptiveAvgPool1d(mean_pooling_layer_output_size)
 
+        self.fc1 = nn.Linear(1124, 200, device=use_cuda)
+        self.non_linear = nn.ReLU()
+        self.fc2 = nn.Linear(200, num_labels, device=use_cuda)
+
     def rand_init_hidden(self, batch_size):
         """
         random initialize hidden variable
@@ -122,23 +126,23 @@ class BertLstmCrf(nn.Module):
         ner_embeddings = kwargs.pop("ner_embeddings").cuda()
         pos_embeddings = kwargs.pop("pos_embeddings").cuda()
 
-        print('pre pooling: ner_embeddings[0, :]')
-        print(ner_embeddings.shape)
-        print(ner_embeddings[0, :])
+        # print('pre pooling: ner_embeddings[0, :]')
+        # print(ner_embeddings.shape)
+        # print(ner_embeddings[0, :])
 
         ner_embeddings = self.mean_pooling_layer(ner_embeddings)
-        print('post pooling: ner_embeddings[0, :]')
-        print(ner_embeddings.shape)
-        print(ner_embeddings[0, :])
-
-        print('pre pooling: pos_embeddings[0, :]')
-        print(pos_embeddings.shape)
-        print(pos_embeddings[0, :])
+        # print('post pooling: ner_embeddings[0, :]')
+        # print(ner_embeddings.shape)
+        # print(ner_embeddings[0, :])
+        #
+        # print('pre pooling: pos_embeddings[0, :]')
+        # print(pos_embeddings.shape)
+        # print(pos_embeddings[0, :])
 
         pos_embeddings = self.mean_pooling_layer(pos_embeddings)
-        print('post pooling: pos_embeddings[0, :]')
-        print(pos_embeddings.shape)
-        print(pos_embeddings[0, :])
+        # print('post pooling: pos_embeddings[0, :]')
+        # print(pos_embeddings.shape)
+        # print(pos_embeddings[0, :])
 
         # print('kwargs[input_ids][0, :]')
         # print(kwargs['input_ids'][0, :])
@@ -162,20 +166,25 @@ class BertLstmCrf(nn.Module):
             sequence_output, hidden = self.lstm(sequence_output, hidden)
             sequence_output = sequence_output.contiguous().view(-1, self.hidden_dim * 2)
             sequence_output = self.output_dropout(sequence_output)
-
             sequence_output = self.liner(sequence_output)
 
         # out = self.liner(sequence_output)
         # print('bert_outputs')
         # print(bert_outputs)
         # print('last layer output')
-        print(bert_outputs[2][-1].shape)
-        print(bert_outputs[2][-1])
+        # print(bert_outputs[2][-1].shape)
+        # print(bert_outputs[2][-1])
         last_layer = bert_outputs[2][-1]
         full_input = torch.cat((last_layer, pos_embeddings, ner_embeddings), dim=2)
-        print('full_input.shape')
-        print(full_input.shape)
-        out = sequence_output
+        # print('full_input.shape')
+        # print(full_input.shape)
+        out = self.fc1(full_input)
+        out = self.non_linear(out)
+        out = self.fc2(out)
+        print('out')
+        print(out.shape)
+        print(out)
+        # out = sequence_output
         # print('sequence_output')
         # print(sequence_output.shape)
         # print(sequence_output)

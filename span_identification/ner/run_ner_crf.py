@@ -362,12 +362,15 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
 
     print('all_ner_embeddings')
     print(all_ner_embeddings.shape)
+    print(all_ner_embeddings)
 
     print('all_pos_embeddings')
     print(all_pos_embeddings.shape)
+    print(all_pos_embeddings)
 
     print('all_input_ids')
     print(all_input_ids.shape)
+    print(all_input_ids)
 
     dataset = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids,
                             all_ner_embeddings, all_pos_embeddings)

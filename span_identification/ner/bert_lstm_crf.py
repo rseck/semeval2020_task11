@@ -159,6 +159,9 @@ class BertLstmCrf(nn.Module):
         # out = self.liner(sequence_output)
         print('bert_outputs')
         print(bert_outputs)
+        print('last layer output')
+        print(bert_outputs[2][-1].shape)
+        print(bert_outputs[2][-1])
         out = sequence_output
         print('sequence_output')
         print(sequence_output.shape)

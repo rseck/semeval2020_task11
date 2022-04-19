@@ -117,8 +117,8 @@ class BertLstmCrf(nn.Module):
         if "labels" in kwargs_copy:
             kwargs_copy.pop("labels")
 
-        print('kwargs_copy')
-        print(kwargs_copy)
+        # print('kwargs_copy')
+        # print(kwargs_copy)
 
         batch_size = kwargs["input_ids"].size(0)
         seq_length = kwargs["input_ids"].size(1)

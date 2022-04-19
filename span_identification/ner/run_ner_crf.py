@@ -138,11 +138,11 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
             if args.model_type != "distilbert":
                 inputs["token_type_ids"] = batch[2] if args.model_type in ["bert", "xlnet"] else None  # XLM and RoBERTa don"t use segment_ids
 
-            logger.info("step batch\n")
-            logger.info(batch)
+            # logger.info("step batch\n")
+            # logger.info(batch)
             outputs = model(**inputs)
-            logger.info("step outputs\n")
-            logger.info(outputs)
+            # logger.info("step outputs\n")
+            # logger.info(outputs)
             loss = outputs[0]  # model outputs are always tuple in pytorch-transformers (see doc)
 
             if args.n_gpu > 1:
@@ -250,8 +250,8 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
             preds.extend(predicted_tags)
             out_label_ids = np.append(out_label_ids, inputs["labels"].detach().cpu().numpy(), axis=0)
 
-    print("outputs")
-    print(outputs)
+    # print("outputs")
+    # print(outputs)
     
     eval_loss = eval_loss / nb_eval_steps
     #preds_logits = softmax(preds, axis=2)
@@ -268,10 +268,10 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
                 out_label_list[i].append(label_map[out_label_ids[i][j]])
                 preds_list[i].append(label_map[preds[i][j]])
 
-    logger.info("out_label_list")
-    logger.info(out_label_list)
-    logger.info("preds_list")
-    logger.info(preds_list)
+    # logger.info("out_label_list")
+    # logger.info(out_label_list)
+    # logger.info("preds_list")
+    # logger.info(preds_list)
     
     results = {
         "loss": eval_loss,
@@ -386,21 +386,21 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
     all_segment_ids = torch.tensor([f.segment_ids for f in features], dtype=torch.long)
     all_label_ids = torch.tensor([f.label_ids for f in features], dtype=torch.long)
 
-    print('len(embeddings) == len(features)')
-    print(len(embeddings) == len(features))
-
-    print('all_ner_embeddings')
-    print(all_ner_embeddings.shape)
+    # print('len(embeddings) == len(features)')
+    # print(len(embeddings) == len(features))
+    #
+    # print('all_ner_embeddings')
+    # print(all_ner_embeddings.shape)
     # print(all_ner_embeddings.get_device())
     # print(all_ner_embeddings)
 
-    print('all_pos_embeddings')
-    print(all_pos_embeddings.shape)
+    # print('all_pos_embeddings')
+    # print(all_pos_embeddings.shape)
     # print(all_pos_embeddings.get_device())
     # print(all_pos_embeddings)
 
-    print('all_input_ids')
-    print(all_input_ids.shape)
+    # print('all_input_ids')
+    # print(all_input_ids.shape)
     # print(all_input_ids.get_device())
     # print(all_input_ids)
 

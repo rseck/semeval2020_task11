@@ -305,17 +305,21 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
 
         logger.info("importing NE and POS embeddings from pickle file at %s",
                     os.path.join(args.data_dir, 'embeddings', files[mode]))
-        embeddings = [] #pickle.load(open(os.path.join(args.data_dir, 'embeddings', mode + ".p"), "rb"))
+        embeddings = pickle.load(open(os.path.join(args.data_dir, 'embeddings', mode + ".p"), "rb"))
 
+        num_sent = len(embeddings)
+        sent_len = len(embeddings[0][0])
+        vec_dim = embeddings[0][0][0].shape[0]
+        all_ner_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
+        all_pos_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
 
-        # ner_sentences_arr = []
-        # pos_sentences_arr = []
-        # for embed in embeddings:
-        #     ner_sent_embed = embed[0]
-        #     pos_sent_embed = embed[1]
-        #
-        #     ner_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in ner_sent_embed]
-        #     ner_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
+        ner_sentences_arr = []
+        pos_sentences_arr = []
+        for embed in embeddings:
+            ner_sent_embed = embed[0]
+            pos_sent_embed = embed[1]
+            ner_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in ner_sent_embed]
+            ner_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
             # print('ner_sent_tensor')
             # print(ner_sent_tensor.get_device())
             # print(ner_sent_tensor)
@@ -325,13 +329,13 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
             # print('ner_sent_arr[250]')
             # print(ner_sent_arr[250].get_device())
             # print(ner_sent_arr[250])
-            # torch.cat(ner_sent_arr, out=ner_sent_tensor)
-            # ner_sentences_arr.append(torch.unsqueeze(ner_sent_tensor, 0))
+            torch.cat(ner_sent_arr, out=ner_sent_tensor)
+            ner_sentences_arr.append(torch.unsqueeze(ner_sent_tensor, 0))
             #
-            # pos_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in pos_sent_embed]
-            # pos_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
-            # torch.cat(pos_sent_arr, out=pos_sent_tensor)
-            # pos_sentences_arr.append(torch.unsqueeze(pos_sent_tensor, 0).cpu())
+            pos_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in pos_sent_embed]
+            pos_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
+            torch.cat(pos_sent_arr, out=pos_sent_tensor)
+            pos_sentences_arr.append(torch.unsqueeze(pos_sent_tensor, 0).cpu())
             # print('pos_sent_tensor')
             # print(pos_sent_tensor.get_device())
             # print(pos_sent_tensor)
@@ -347,8 +351,8 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
         # print(all_ner_embeddings.shape)
         # print(all_ner_embeddings)
 
-        # torch.cat(ner_sentences_arr, out=all_ner_embeddings)
-        # torch.cat(pos_sentences_arr, out=all_pos_embeddings)
+        torch.cat(ner_sentences_arr, out=all_ner_embeddings)
+        torch.cat(pos_sentences_arr, out=all_pos_embeddings)
 
         examples = read_examples_from_file(os.path.join(args.data_dir, files[mode]), mode)
         features = convert_examples_to_features(examples, labels, args.max_seq_length, tokenizer,
@@ -366,11 +370,8 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
                                                 pad_token_label_id=pad_token_label_id
                                                 )
 
-        num_sent = len(features)
-        sent_len = 256
-        vec_dim = 768
-        all_ner_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
-        all_pos_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
+        # all_ner_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
+        # all_pos_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
 
         if args.local_rank in [-1, 0]:
             logger.info("Saving features into cached file %s", cached_features_file)
@@ -386,22 +387,22 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
     all_label_ids = torch.tensor([f.label_ids for f in features], dtype=torch.long)
 
     print('len(embeddings) == len(features)')
-    #print(len(embeddings) == len(features))
+    print(len(embeddings) == len(features))
 
     print('all_ner_embeddings')
     print(all_ner_embeddings.shape)
-    print(all_ner_embeddings.get_device())
-    print(all_ner_embeddings)
+    # print(all_ner_embeddings.get_device())
+    # print(all_ner_embeddings)
 
     print('all_pos_embeddings')
     print(all_pos_embeddings.shape)
-    print(all_pos_embeddings.get_device())
-    print(all_pos_embeddings)
+    # print(all_pos_embeddings.get_device())
+    # print(all_pos_embeddings)
 
     print('all_input_ids')
     print(all_input_ids.shape)
-    print(all_input_ids.get_device())
-    print(all_input_ids)
+    # print(all_input_ids.get_device())
+    # print(all_input_ids)
 
     dataset = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids,
                             all_ner_embeddings, all_pos_embeddings)

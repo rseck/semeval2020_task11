@@ -119,8 +119,8 @@ class BertLstmCrf(nn.Module):
         batch_size = kwargs["input_ids"].size(0)
         seq_length = kwargs["input_ids"].size(1)
 
-        ner_embeddings = kwargs.pop("ner_embeddings")
-        pos_embeddings = kwargs.pop("pos_embeddings")
+        ner_embeddings = kwargs.pop("ner_embeddings").cuda()
+        pos_embeddings = kwargs.pop("pos_embeddings").cuda()
 
         print('pre pooling: ner_embeddings[0, :]')
         print(ner_embeddings.shape)

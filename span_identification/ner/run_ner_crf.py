@@ -385,7 +385,7 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
     all_label_ids = torch.tensor([f.label_ids for f in features], dtype=torch.long)
 
     print('len(embeddings) == len(features)')
-    print(len(embeddings) == len(features))
+    #print(len(embeddings) == len(features))
 
     print('all_ner_embeddings')
     print(all_ner_embeddings.shape)

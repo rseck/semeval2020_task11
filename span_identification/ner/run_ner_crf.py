@@ -339,7 +339,7 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
             # print(pos_sent_tensor)
 
         for i in range(len(ner_sentences_arr)):
-            print('ner_sentences_arr[' + i + '0] shape')
+            print('ner_sentences_arr[' + str(i) + '0] shape')
             print(ner_sentences_arr[i].shape)
         # print('ner_sentences_arr[250].shape')
         # print(ner_sentences_arr[250].shape)

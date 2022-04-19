@@ -460,6 +460,7 @@ def transformers_ner_crf(args):
     config = config_class.from_pretrained(args.config_name if args.config_name else args.model_name_or_path,
                                           num_labels=num_labels,
                                           cache_dir=args.cache_dir if args.cache_dir else None)
+    config.output_hidden_states = True
     tokenizer = tokenizer_class.from_pretrained(args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
                                                 do_lower_case=args.do_lower_case,
                                                 cache_dir=args.cache_dir if args.cache_dir else None)

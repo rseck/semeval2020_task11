@@ -131,14 +131,23 @@ class BertLstmCrf(nn.Module):
         print(ner_embeddings.shape)
         print(ner_embeddings[0, :])
 
-        print('kwargs[input_ids][0, :]')
-        print(kwargs['input_ids'][0, :])
+        print('pre pooling: pos_embeddings[0, :]')
+        print(pos_embeddings.shape)
+        print(pos_embeddings[0, :])
 
-        print('kwargs[labels][0, :]')
-        print(kwargs['labels'][0, :])
+        pos_embeddings = self.mean_pooling_layer(pos_embeddings)
+        print('post pooling: pos_embeddings[0, :]')
+        print(pos_embeddings.shape)
+        print(pos_embeddings[0, :])
 
-        print('kwargs[attention_mask][0, :]')
-        print(kwargs['attention_mask'][0, :])
+        # print('kwargs[input_ids][0, :]')
+        # print(kwargs['input_ids'][0, :])
+        #
+        # print('kwargs[labels][0, :]')
+        # print(kwargs['labels'][0, :])
+        #
+        # print('kwargs[attention_mask][0, :]')
+        # print(kwargs['attention_mask'][0, :])
 
         bert_outputs = self.bert_encoder(
             **kwargs
@@ -157,32 +166,36 @@ class BertLstmCrf(nn.Module):
             sequence_output = self.liner(sequence_output)
 
         # out = self.liner(sequence_output)
-        print('bert_outputs')
-        print(bert_outputs)
-        print('last layer output')
+        # print('bert_outputs')
+        # print(bert_outputs)
+        # print('last layer output')
         print(bert_outputs[2][-1].shape)
         print(bert_outputs[2][-1])
+        last_layer = bert_outputs[2][-1]
+        full_input = torch.cat((last_layer, pos_embeddings, ner_embeddings), dim=2)
+        print('full_input.shape')
+        print(full_input.shape)
         out = sequence_output
-        print('sequence_output')
-        print(sequence_output.shape)
-        print(sequence_output)
+        # print('sequence_output')
+        # print(sequence_output.shape)
+        # print(sequence_output)
         logits = out.contiguous().view(batch_size, seq_length, -1)
-        print('logits')
-        print(logits.shape)
-        print(logits[0, :])
+        # print('logits')
+        # print(logits.shape)
+        # print(logits[0, :])
 
         clear_logits, clear_labels, clear_mask = self.clear_subtokens(logits, kwargs['labels'],
                                                                       kwargs["attention_mask"])
 
-        print('clear_logits')
-        print(clear_logits.shape)
-        print(clear_logits[0, :])
-        print('clear_labels')
-        print(clear_labels.shape)
-        print(clear_labels[0, :])
-        print('clear_mask')
-        print(clear_mask.shape)
-        print(clear_mask[0, :])
+        # print('clear_logits')
+        # print(clear_logits.shape)
+        # print(clear_logits[0, :])
+        # print('clear_labels')
+        # print(clear_labels.shape)
+        # print(clear_labels[0, :])
+        # print('clear_mask')
+        # print(clear_mask.shape)
+        # print(clear_mask[0, :])
 
         """
         best_paths = self.crf.viterbi_tags(

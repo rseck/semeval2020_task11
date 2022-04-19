@@ -76,9 +76,9 @@ class BertLstmCrf(nn.Module):
 
         self.mean_pooling_layer = nn.AdaptiveAvgPool1d(mean_pooling_layer_output_size)
 
-        self.fc1 = nn.Linear(1124, 200, device=use_cuda)
+        self.fc1 = nn.Linear(1124, 200)
         self.non_linear = nn.ReLU()
-        self.fc2 = nn.Linear(200, num_labels, device=use_cuda)
+        self.fc2 = nn.Linear(200, num_labels)
 
     def rand_init_hidden(self, batch_size):
         """

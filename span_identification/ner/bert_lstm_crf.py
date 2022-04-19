@@ -157,6 +157,8 @@ class BertLstmCrf(nn.Module):
             sequence_output = self.liner(sequence_output)
 
         # out = self.liner(sequence_output)
+        print('bert_outputs')
+        print(bert_outputs)
         out = sequence_output
         print('sequence_output')
         print(sequence_output.shape)

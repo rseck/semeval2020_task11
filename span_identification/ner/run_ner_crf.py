@@ -317,7 +317,7 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
             pos_sent_embed = embed[1]
 
             ner_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in ner_sent_embed]
-            ner_sent_tensor = torch.Tensor(sent_len, vec_dim)()
+            ner_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
             print('ner_sent_tensor')
             print(ner_sent_tensor.get_device())
             print(ner_sent_tensor)

@@ -113,6 +113,21 @@ class BertLstmCrf(nn.Module):
         batch_size = kwargs["input_ids"].size(0)
         seq_length = kwargs["input_ids"].size(1)
 
+        ner_embeddings = kwargs.pop("ner_embeddings")
+        pos_embeddings = kwargs.pop("pos_embeddings")
+
+        print('ner_embeddings.numpy()[0]')
+        print(ner_embeddings.numpy()[0])
+
+        print('kwargs[input_ids].numpy()[0]')
+        print(kwargs['input_ids'].numpy()[0])
+
+        print('kwargs[labels].numpy()[0]')
+        print(kwargs['labels'].numpy()[0])
+
+        print('kwargs[attention_mask].numpy()[0]')
+        print(kwargs['attention_mask'].numpy()[0])
+
         bert_outputs = self.bert_encoder(
             **kwargs
         )
@@ -137,19 +152,19 @@ class BertLstmCrf(nn.Module):
         logits = out.contiguous().view(batch_size, seq_length, -1)
         print('logits')
         print(logits.shape)
-        print(logits)
+        print(logits.numpy()[0])
         
         clear_logits, clear_labels, clear_mask = self.clear_subtokens(logits, kwargs['labels'], kwargs["attention_mask"])
 
         print('clear_logits')
         print(clear_logits.shape)
-        print(clear_logits)
+        print(clear_logits.numpy()[0])
         print('clear_labels')
         print(clear_labels.shape)
-        print(clear_labels)
+        print(clear_labels.numpy()[0])
         print('clear_mask')
         print(clear_mask.shape)
-        print(clear_mask)
+        print(clear_mask.numpy()[0])
         
         """
         best_paths = self.crf.viterbi_tags(

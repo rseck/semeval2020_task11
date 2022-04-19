@@ -20,6 +20,8 @@ import torch
 
 from .conditional_random_field import ConditionalRandomField, allowed_transitions
 
+mean_pooling_layer_output_size = 50
+
 
 class BertLstmCrf(nn.Module):
     """
@@ -72,6 +74,8 @@ class BertLstmCrf(nn.Module):
 
         self.output_dropout = nn.Dropout(p=output_dropout)
 
+        self.mean_pooling_layer = nn.AdaptiveAvgPool1d(mean_pooling_layer_output_size)
+
     def rand_init_hidden(self, batch_size):
         """
         random initialize hidden variable
@@ -79,7 +83,7 @@ class BertLstmCrf(nn.Module):
         return Variable(
             torch.randn(2 * self.rnn_layers, batch_size, self.hidden_dim)), Variable(
             torch.randn(2 * self.rnn_layers, batch_size, self.hidden_dim))
-    
+
     def clear_subtokens(self, logits, labels, mask):
         clear_labels = torch.zeros_like(labels)
         clear_logits = torch.zeros_like(logits)
@@ -103,6 +107,8 @@ class BertLstmCrf(nn.Module):
             crf output (word_seq_len, batch_size, tag_size, tag_size), hidden
         '''
 
+        torch.set_printoptions(threshold=10_000)
+
         kwargs_copy = copy.deepcopy(kwargs)
         if "labels" in kwargs_copy:
             kwargs_copy.pop("labels")
@@ -116,7 +122,13 @@ class BertLstmCrf(nn.Module):
         ner_embeddings = kwargs.pop("ner_embeddings")
         pos_embeddings = kwargs.pop("pos_embeddings")
 
-        print('ner_embeddings[0, :]')
+        print('pre pooling: ner_embeddings[0, :]')
+        print(ner_embeddings.shape)
+        print(ner_embeddings[0, :])
+
+        ner_embeddings = self.mean_pooling_layer(ner_embeddings)
+        print('post pooling: ner_embeddings[0, :]')
+        print(ner_embeddings.shape)
         print(ner_embeddings[0, :])
 
         print('kwargs[input_ids][0, :]')
@@ -133,7 +145,7 @@ class BertLstmCrf(nn.Module):
         )
         sequence_output = bert_outputs[1]
 
-        #self.lstm is None
+        # self.lstm is None
         if self.lstm is not None:
             hidden = self.rand_init_hidden(batch_size)
             if kwargs["input_ids"].is_cuda:
@@ -141,10 +153,10 @@ class BertLstmCrf(nn.Module):
             sequence_output, hidden = self.lstm(sequence_output, hidden)
             sequence_output = sequence_output.contiguous().view(-1, self.hidden_dim * 2)
             sequence_output = self.output_dropout(sequence_output)
-            
+
             sequence_output = self.liner(sequence_output)
 
-        #out = self.liner(sequence_output)
+        # out = self.liner(sequence_output)
         out = sequence_output
         print('sequence_output')
         print(sequence_output.shape)
@@ -153,8 +165,9 @@ class BertLstmCrf(nn.Module):
         print('logits')
         print(logits.shape)
         print(logits[0, :])
-        
-        clear_logits, clear_labels, clear_mask = self.clear_subtokens(logits, kwargs['labels'], kwargs["attention_mask"])
+
+        clear_logits, clear_labels, clear_mask = self.clear_subtokens(logits, kwargs['labels'],
+                                                                      kwargs["attention_mask"])
 
         print('clear_logits')
         print(clear_logits.shape)
@@ -165,7 +178,7 @@ class BertLstmCrf(nn.Module):
         print('clear_mask')
         print(clear_mask.shape)
         print(clear_mask[0, :])
-        
+
         """
         best_paths = self.crf.viterbi_tags(
             logits,
@@ -180,11 +193,11 @@ class BertLstmCrf(nn.Module):
         )
         # Just get the top tags and ignore the scores.
         predicted_tags = cast(List[List[int]], [x[0][0] for x in best_paths])
-        
+
         if kwargs.get("labels") is not None:
             print("kwargs.get(labels) is indeed not None")
             labels = kwargs.get("labels").cpu()
-            #log_likelihood = self.crf(logits, kwargs.get("labels"), kwargs["attention_mask"])
+            # log_likelihood = self.crf(logits, kwargs.get("labels"), kwargs["attention_mask"])
             log_likelihood = self.crf(clear_logits, clear_labels, clear_mask)
             loss = -log_likelihood
             correct_predicted_tags = np.zeros_like(labels)

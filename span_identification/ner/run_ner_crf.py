@@ -227,7 +227,9 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
         with torch.no_grad():
             inputs = {"input_ids": batch[0],
                       "attention_mask": batch[1],
-                      "labels": batch[3]}
+                      "labels": batch[3],
+                      "ner_embeddings": batch[4],
+                      "pos_embeddings": batch[5]}
             if args.model_type != "distilbert":
                 inputs["token_type_ids"] = batch[2] if args.model_type in ["bert", "xlnet"] else None  # XLM and RoBERTa don"t use segment_ids
             outputs = model(**inputs)
@@ -304,11 +306,6 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
                     os.path.join(args.data_dir, 'embeddings', files[mode]))
         embeddings = [] #pickle.load(open(os.path.join(args.data_dir, 'embeddings', mode + ".p"), "rb"))
 
-        num_sent = len(embeddings)
-        sent_len = len(embeddings[0][0])
-        vec_dim = embeddings[0][0][0].shape[0]
-        all_ner_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
-        all_pos_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
 
         # ner_sentences_arr = []
         # pos_sentences_arr = []
@@ -367,6 +364,12 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
                                                 pad_token_segment_id=4 if args.model_type in ["xlnet"] else 0,
                                                 pad_token_label_id=pad_token_label_id
                                                 )
+
+        num_sent = len(features)
+        sent_len = 256
+        vec_dim = 768
+        all_ner_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
+        all_pos_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
 
         if args.local_rank in [-1, 0]:
             logger.info("Saving features into cached file %s", cached_features_file)

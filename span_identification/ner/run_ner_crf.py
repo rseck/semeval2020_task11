@@ -36,26 +36,18 @@ from tqdm import tqdm, trange
 from .utils_ner import convert_examples_to_features, get_labels, read_examples_from_file
 from .bert_lstm_crf import BertLstmCrf
 
+from transformers import BigBirdConfig, BigBirdForTokenClassification, BigBirdTokenizer
 from transformers import AdamW, get_linear_schedule_with_warmup
-from transformers import WEIGHTS_NAME, BertConfig, BertForTokenClassification, BertTokenizer
-from transformers import RobertaConfig, RobertaForTokenClassification, RobertaTokenizer
-from transformers import DistilBertConfig, DistilBertForTokenClassification, DistilBertTokenizer
-from transformers import XLNetConfig, XLNetForTokenClassification, XLNetTokenizer
-from transformers import CamembertConfig, CamembertForTokenClassification, CamembertTokenizer
 from scipy.special import softmax
 
 logger = logging.getLogger(__name__)
 
 ALL_MODELS = sum(
-    (tuple(conf.pretrained_config_archive_map.keys()) for conf in (BertConfig, RobertaConfig, DistilBertConfig)),
+    (tuple(conf.pretrained_config_archive_map.keys()) for conf in (BigBirdConfig)),
     ())
 
 MODEL_CLASSES = {
-    "bert": (BertConfig, BertForTokenClassification, BertTokenizer),
-    "roberta": (RobertaConfig, RobertaForTokenClassification, RobertaTokenizer),
-    "distilbert": (DistilBertConfig, DistilBertForTokenClassification, DistilBertTokenizer),
-    "camembert": (CamembertConfig, CamembertForTokenClassification, CamembertTokenizer),
-    "xlnet": (XLNetConfig, XLNetForTokenClassification, XLNetTokenizer)
+    "bigbird": (BigBirdConfig, BigBirdForTokenClassification, BigBirdTokenizer)
 }
 
 

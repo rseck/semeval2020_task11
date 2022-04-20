@@ -23,15 +23,15 @@ predicted_labels_files: [model_checkpoints/si_roberta_crf/test_predictions.txt]
 
 -------------transformers params------------
 
-model_type: roberta
-config_name: roberta-large
-model_name_or_path: model_checkpoints/ner_roberta_large_uncased_crf_7700
-max_seq_length: 256
+model_type: bigbird
+config_name: BigBirdConfig
+model_name_or_path: model_checkpoints/ner_bigbird_crf_7700
+max_seq_length: 4096
 per_gpu_train_batch_size: 6
 per_gpu_eval_batch_size: 1
 learning_rate: 2e-5
 save_steps: 700
 warmup_steps: 500
 num_train_epochs: 27
-output_dir: model_checkpoints/ner_roberta_large_uncased_crf_7700/
+output_dir: model_checkpoints/ner_bigbird_crf_7700/
 do_lower_case: True

@@ -9,4 +9,4 @@
 #SBATCH --ntasks=1
 #SBATCH --gpus=1
 
-srun python -m span_identification --config configs/si_config.yml --do_eval --use_crf
+srun python -m span_identification --config configs/si_config.yml --do_eval --use_crf --overwrite_cache

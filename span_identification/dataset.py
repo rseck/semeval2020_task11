@@ -83,6 +83,8 @@ def create_BIO_labeled(file, data, articles_content_dict, nlp, seq_length):
         for article_id, spans in tqdm(data):
             text = articles_content_dict[article_id]
             tokens = [(token.idx, token.text) for token in nlp(text)]
+            if len(tokens) == 0:
+                continue
             idx = np.array(tokens)[:,0]
             tokens = np.array(tokens)[:,1]
             prev_tok = '\n'
@@ -119,7 +121,9 @@ def create_BIO_unlabeled(file, articles_id, articles_content, nlp, seq_length):
     with open(file, 'w') as f:
         for article_id, text in tqdm(zip(articles_id, articles_content)):
             tokens = [(token.idx, token.text) for token in nlp(text)]
-            #idx = np.array(tokens)[:,0]
+            if len(tokens) == 0:
+                continue
+            idx = np.array(tokens)[:,0]
             tokens = np.array(tokens)[:,1]
             prev_tok = '\n'
 

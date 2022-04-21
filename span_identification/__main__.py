@@ -30,8 +30,9 @@ def Main(args):
         dev_file_path = os.path.join(args.data_dir, args.dev_file)
         if not os.path.exists(train_file_path) or not os.path.exists(dev_file_path) or args.overwrite_cache:
             logger.info("Creating 'ner' train/dev files: %s, %s", train_file_path, dev_file_path)
-            train_ids, dev_ids = get_train_dev_files(articles_id, articles_content, nlp, args.labels_path, train_file_path,
-                                                     dev_file_path, args.split_by_ids, args.dev_size, args.random_state)
+            train_ids, dev_ids = get_train_dev_files(articles_id, articles_content, nlp, args.labels_path,
+                                                     train_file_path, dev_file_path, args.split_by_ids, args.dev_size,
+                                                     args.random_state, args.max_seq_length)
             if args.split_dataset:
                 create_subfolder(os.path.join(args.data_dir, 'train-train-articles'),  args.train_data_folder, train_ids)
                 create_subfolder(os.path.join(args.data_dir, 'train-dev-articles'),  args.train_data_folder, dev_ids)
@@ -41,7 +42,7 @@ def Main(args):
         test_file_path = os.path.join(args.data_dir, args.test_file)
         if (not os.path.exists(test_file_path) or args.overwrite_cache) and not args.do_eval_spans:
             logger.info("Creating 'ner' test file: %s", test_file_path)
-            get_test_file(test_file_path, test_articles_id, test_articles_content, nlp)            
+            get_test_file(test_file_path, test_articles_id, test_articles_content, nlp, args.max_seq_length)
     
     if args.do_train or args.do_eval or args.do_predict:
         if args.use_crf:

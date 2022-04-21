@@ -1,0 +1,18 @@
+Version 2.0 is here! Completely rewritten and new interface! Get your copy now with a new 25% discount!
+Have you ever needed a game asset that you purchased or downloaded but then couldn't find where you saved it? Are you tired of scrolling through folders of files to just find one specific file?
+Let GameDev DAM help you organize all your files!
+What is DAM/Digital Asset management? It is totally one of those "buzz phrases" that gets thrown a lot but at it's core it is a system that helps organize all your assets in one place which can be assigned keywords so they are easy to search for. The best DAMs on the market will make it very easy to add keywords to files and allow quick and easy searching based on keywords. Luckily, this DAM DOES!
+Either import individual files into the system, or batch import a folder of assets (including folders inside that one)
+Quickly and easily associate keywords to individual assets or select multiple and add keywords to all selected.
+Quick search bar at the top for each asset type to narrow down the list of assets to look through
+No moving/deleting of original asset files, system makes copies of each asset and stores them within it's folder for the system to quickly access the files
+Quickly preview image assets, listen to audio assets within the system, and watch video assets through the system
+Customize the system to use your own logo to make it your own
+Optional integration with Clarifai (Deeplearning web api that guesses keywords for images you provide it)
+Easily select multiple files and batch Download/Delete the assets when you need to
+Not an installed app, so it can be moved to external hard drives or cloud storage to easily access it from whatever computer you happen to be on.
+Purchase the app and get all basic updates for free!
+Great price, impossible to find DAM software at this price!
+Created by a game developer, so I get what is needed and what would be nice for a game developer's day to day
+For use with only one user for the standalone version
+Any suggestions, ideas or bug reports are more than welcome and are very appreciated! Help me release the best Digital Asset Management app for game developers to save all us developers time and money!

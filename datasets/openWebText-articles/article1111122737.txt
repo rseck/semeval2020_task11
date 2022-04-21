@@ -1,0 +1,14 @@
+At CES 2020, NVIDIA and ASUS just announced the world’s first 360Hz G-SYNC display – the ASUS ROG Swift 360! Here are the details!
+NVIDIA first introduced G-SYNC in 2013. It is a variable refresh rate technology that eliminates tearing by synchronising the display’s refresh rate with the GPU’s actual frame rate.
+Since then, they have improved it with new technologies like dynamic overdrive to improve player perception, and custom-tuned firmware for better image quality.
+NVIDIA is now introducing 360Hz refresh rates for even faster reaction times – reducing it to less than 3 ms, so esports professionals can enjoy tear-free frames at incredibly low latencies.
+ASUS ROG Swift 360 : World’s First 360Hz G-SYNC Display!
+ASUS developed the ROG Swift 360 with NVIDIA, targeting it at esports professionals. It features a 24.5-inch panel, with these official features :
+Blistering Fast Refresh Rate: 360Hz delivers crystal clear visuals, extremely low system latency for faster reaction times, and the smoothest motion to keep pros on target.
+360Hz delivers crystal clear visuals, extremely low system latency for faster reaction times, and the smoothest motion to keep pros on target. Designed for Esports: Play how the pros do and never miss a critical moment with the highest performance 24.5 inch Full HD display.
+Play how the pros do and never miss a critical moment with the highest performance 24.5 inch Full HD display. Superior Clarity: No distracting tearing, stuttering, flicker, or artifacts with NVIDIA G-SYNC VRR technology.
+No distracting tearing, stuttering, flicker, or artifacts with NVIDIA G-SYNC VRR technology. Quality Certified by NVIDIA: All G-SYNC certified displays undergo a rigorous validation process and are subjected to 300 image quality tests to ensure they deliver consistent quality and maximum performance.
+NVIDIA will be using the ASUS ROG Swift 360 running a set of esports demos to demonstrate its improved performance in target acquisition, aiming and perception.
+For now, the ASUS ROG Swift 360 is only available for demonstration at the NVIDIA CES 2020 showcase. Price and availability will be revealed later.
+Go Back To > Software | Business | Home
+If you like our work, you can help support our work by visiting our sponsors, participating in the Tech ARP Forums, or even donating to our fund. Any help you can render is greatly appreciated!

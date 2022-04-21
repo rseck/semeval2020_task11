@@ -1,0 +1,6 @@
+After only three month the well known developer Mojang has released their new Update 1.10 for Minecraft, called the ‘FrostBurn Update’. The changelog is not as long as in the previous versions but still it consist of many interesting new features and changes.
+They added for example two new hostile creatures to the game, which are on the one side the polar bears who spawn in the frozen plains and on the other, the new and stronger zombies which approach you in the deserts.
+Another big feature is the second ‘technical block’, the so-called Structure Block which can store templates of structures and place them. Since the block is a technical block, you can only get it in the Creative Menu or as admin.
+A rare chance to find lonely trees in plains
+Find abandoned mineshafts filled with gold in mesa biomes
+More variations of villages, based on the biomes they are built in

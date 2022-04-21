@@ -1,0 +1,9 @@
+File does not exist on this server Zippyshare.com News: HTTPS/SSL activation
+03 Apr 2018 20:48 Upload/Download has been moved to the https/ssl protocol. Everything should work stable now. Please report any encountered bugs. ...
+03 Dec 2017 23:38 Hey folks, <strong>A quick update:</strong> - Today a new version (0.0.16.0) of the Zippyuploader was released. The only change is related to an increased file size limit of 500MB. If something ...
+500MB - We just increased the file size limit.
+13 Nov 2017 00:08 This is probably a long-awaited update, but I assure you that this is not the last change prepared by us for the next 3 months. Let us know if everything with the new limit works as intended. Cheers! ...
+To upload a file just follow these simple steps: Benefits of using Zippyshare: 1) Select a file to send by clicking the "Browse" button. You can then select photos, audio, video, documents or anything else you want to send. The maximum file size is 500 MB.
+2) Click the "Start Upload" button to start uploading the file. You will see the progress of the file transfer. Please don't close your browser window while uploading or it will cancel the upload.
+3) After a succesfull upload you'll receive a unique link to the download site, which you can place anywhere: on your homepage, blog, forum or send it via IM or e-mail to your friends.
+Zippyshare.com is completely free, reliable and popular way to store files online. We offer fast download speeds. The maximum filesize for a single file is 500 MB. The file can be downloaded at any time and as often as you need it. File Life: 30 days after no activity. No ridiculous queues! No limits! Report illegal files, please click here and send full link to us!

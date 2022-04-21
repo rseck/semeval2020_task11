@@ -9,4 +9,4 @@
 #SBATCH --ntasks=1
 #SBATCH --gpus=1
 
-python -m span_identification --config configs/si_config.yml --use_crf --do_predict --overwrite_cache
+python -m span_identification --config configs/si_config.yml --use_crf --do_predict

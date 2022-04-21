@@ -460,14 +460,14 @@ def transformers_ner_crf(args):
                                                 do_lower_case=args.do_lower_case,
                                                 cache_dir=args.cache_dir if args.cache_dir else None)
     
-    bert_model = model_class.from_pretrained(args.model_name_or_path,
+    bigbird_model = model_class.from_pretrained(args.model_name_or_path,
                                         from_tf=bool(".ckpt" in args.model_name_or_path),
                                         config=config,
                                         cache_dir=args.cache_dir if args.cache_dir else None)
     if not hasattr(config, "hidden_dropout_prob"):
         config.hidden_dropout_prob = config.dropout
     model = BertLstmCrf(
-        bert_model,
+        bigbird_model,
         num_labels=num_labels,
         embedding_dim=config.hidden_size,
         hidden_dim=int(config.hidden_size / 2),
@@ -523,7 +523,7 @@ def transformers_ner_crf(args):
             global_step = checkpoint.split("-")[-1] if len(checkpoints) > 1 else ""
             
             model = BertLstmCrf(
-                bert_model,
+                bigbird_model,
                 num_labels=num_labels,
                 embedding_dim=config.hidden_size,
                 hidden_dim=int(config.hidden_size / 2),
@@ -557,7 +557,7 @@ def transformers_ner_crf(args):
         logger.info("Evaluate the following checkpoints: %s", checkpoints)
         for checkp in checkpoints:
             model = BertLstmCrf(
-                bert_model,
+                bigbird_model,
                 num_labels=num_labels,
                 embedding_dim=config.hidden_size,
                 hidden_dim=int(config.hidden_size / 2),

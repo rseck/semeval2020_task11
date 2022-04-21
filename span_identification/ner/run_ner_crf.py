@@ -37,6 +37,7 @@ from .utils_ner import convert_examples_to_features, get_labels, read_examples_f
 from .bert_lstm_crf import BertLstmCrf
 
 from transformers import BigBirdConfig, BigBirdForTokenClassification, BigBirdTokenizer
+from transformers import WEIGHTS_NAME
 from transformers import AdamW, get_linear_schedule_with_warmup
 from scipy.special import softmax
 

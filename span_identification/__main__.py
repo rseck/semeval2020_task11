@@ -111,7 +111,7 @@ def main():
     parser.add_argument("--use_crf", action="store_true", help="Use Conditional Random Field over the model")
     parser.add_argument("--use_quotes", action="store_true")
     
-    MODEL_CLASSES = ["bert", "roberta", "distilbert", "camembert"]
+    MODEL_CLASSES = ["bert", "roberta", "distilbert", "camembert", "bigbird"]
     parser.add_argument("--model_type", default=None, type=str, required=True,
                         help="Model type selected in the list: " + ", ".join(MODEL_CLASSES))
     parser.add_argument("--model_name_or_path", default=None, type=str, required=True,

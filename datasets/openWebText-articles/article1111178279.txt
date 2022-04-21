@@ -1,0 +1,2 @@
+PSC refers to the Percentage Sold for Completion, which is the percentage of the funded inventory the brand needs to sell for all backers to earn back their initial purchase price and profit payout.
+You’ll find the PSC on a Co-Op overview page.

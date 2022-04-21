@@ -1,0 +1,11 @@
+— functionality to assign replicas to brokers so they can span multiple racks or availability zones, and many other new features.
+— an additional field inside the message that enables log retention and rolling as well as stream processing based on event-time,
+is the newest major release of Apache Kafka , which includes more than 400
+introduces the first commercial product through the Confluent Platform offering — Control Center, for comprehensive management and monitoring of Apache Kafka . Read this
+Kafka Connect contributions have been growing rapidly over the past month! Checkout this new
+this month! Enrico Canzonieri and Usman Masood gave great presentations on operating Kafka at scale and executing continuous SQL queries on top of Kafka, respectively.
+using event streams and Kafka for keeping data in sync across heterogeneous systems
+If you want to learn more about applying Kafka for real-time data analysis, read this
+for a production use case in online anomaly detection, and also this
+about using Kafka and Samza for spam detection, and also this
+about using Kafka and Flink to migrate your batch jobs to streaming.

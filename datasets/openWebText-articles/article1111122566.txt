@@ -1,0 +1,9 @@
+Warlord is a tabletop wargaming list-building app with a strong focus on the narrative gamer
+Warlord is a tabletop wargaming list-building app with a strong focus on the narrative gamer.
+Create and manage your wargaming lists for virtually any tabletop gaming system. Import unit and equipment lists by browsing public BSData or manually enter data from your wargaming army book.
+Warlord is bringing narrative back! - not only does the app let you create army lists, but also enables you to add images, abilities and backgrounds to your units and armies to create a narrative to your battle even before you hit the table
+Quick list building allows you to copy and edit previously used unit/equipment/abilities configurations. The more you use the app, the faster it becomes.
+Share your lists with friends or opponents before or during your game via Airdrop or uploading to your favourite file sharing site.
+Manage your unit entries and points from within the app. By once entering the units, equipment and points from your army book or annual points update book manually you can then use the app to quickly and effectively make detailed army lists. In testing we have found a typical game system army book takes around 20-30 minutes to input into the app. Alternatively, you can browse and import public BSData from within the settings page instantly.
+The app is designed to be used as a companion to your army book and not replace it.
+If you have any suggestions on how we can improve Warlord, please let us know!

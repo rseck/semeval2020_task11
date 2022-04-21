@@ -1,0 +1,10 @@
+The beginning of a new decade is just around the corner. We are excited for the year ahead, and with all the new things coming up in the space. Governments and companies have started exploring the utilization of the blockchain technology, giving a sense of what lies ahead. There are some areas which will be quite interesting to look out for:
+Built upon the foundation we have achieved in 2019, we have now finalized our 2020 roadmap. Our focus remains on actual deployment. Please also read our disclaimer* when you plan to utilize these forward-looking statements.
+Enable XPOS® to accept crypto payment from decentralized wallets.
+Conduct alpha testing of Pundi X platform on Function X blockchain, including on-chain payment on Function X.
+2020 is going to be a great year for companies who have real use cases to scale and develop further. At Pundi X, we are committed to making use cases to bring blockchain into people’s daily life.
+To discuss our progress in Q4 2019, token removal, and outlook in 2020 in details, join us at 11:00 am GMT+8 on Jan 3, 2020. Look forward to your participation!
+Road map contains forward-looking statements regarding Pundi X expected progress, future features, and our business plans.
+These statements reflect Pundi X current expectations with respect to future events; they are based on assumptions and are subject to risks, uncertainties and change at any time as the company operates in a changing regulatory environment and highly evolving technical space. Pundi X is obligated to comply with regulatory requirements or acquire permissions of new services, which may cause delay or transferring to other organizations to continue the newly developed services.
+Given these risks and uncertainties, you are cautioned not to rely on these forward-looking statements. Actual results, performance or events may be different from what is predicted in the forward-looking statements.
+The forward-looking statements cannot constitute technological, financial, investment, legal or other advice. Please consult with experts in appropriate areas before implementing or utilizing the forward-looking statements.

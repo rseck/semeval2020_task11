@@ -1,0 +1,21 @@
+Philips announced a new Sonicare electric toothbrush called the FlexCare Platinum Connected, which connects to your smartphone. It's a smart toothbrush, and it claims to help you make sure you're brushing your teeth as well as you can.
+The toothbrush, slated to come out in July, is one of a handful of smart toothbrushes that have come out or been announced over the past couple years. Most of them have similar goals of making sure you brush your teeth for long enough. The FlexCare boasts some extra personal features, as would be expected given its steep asking price of $200.
+The toothbrush connects to a smartphone app via Bluetooth and uses different sensors to tell you how well you're brushing, so it's like an electric toothbrush with a built-in guidance system.
+In this app prototype, the white areas received enough attention while the yellow areas were lacking. Credit: Brittany Herbert/mashable
+If that seems like too much to pack inside a toothbrush, the American Dental Association probably wouldn't disagree with you.
+"Both manual and powered toothbrushes can effectively and thoroughly clean your teeth," the ADA says on its website. In fact, in its list of recommended toothbrushes, the ADA does not list any "powered" toothbrushes. We can surmise anything much more advanced than the free, manual toothbrush you get from your dentist is pretty superfluous to the average brusher.
+The FlexCare on its own looks like most other electric toothbrushes. It has replaceable heads and three different vibration frequency levels, which according to Philips will get you about 31,000 brush strokes per minute.
+The Sonicare FlexCare Platinum Connected toothbrush has disposable heads and adjustable settings. Credit: brittany herbert/mashable
+The connected FlexCare has a location sensor to determine what section of your mouth you're brushing and how long you're hitting each section. The sections are kind of broad, and the sensor isn't accurate enough to tell you if you're missing a specific tooth, just a range of about five or six teeth.
+As you brush, the app highlights which area you are brushing and lets you know when that section has received enough attention.
+It can sense how much pressure you're applying and how much you're scrubbing
+Other connected toothbrushes will time out your brushing process as well but they don't get quite as detailed as the FlexCare. It also claims to sense how much pressure you're applying and how much you're scrubbing, and will tell you to adjust in real time if you're overdoing it.
+You can also input specific data for your teeth, like if you have gum recession in an area. If that's the case, the app will adjust to tell you to use less pressure on that area of your mouth. Though, you could easily just brush with less pressure without an app to tell you that.
+The app will ask if you flossed, too, and while you could just lie to it, the guilt factor alone may shame you into doing it.
+Based on all of the brushing data the FlexCare accrues, you can get personalized tips. Philips said there are about 3,000 different lines of coaching to help you adjust for the best cleaning -- which seems like vastly more tips than we would have expected there to be.
+The toothbrush gamifies dental health by giving you points as an incentive to form good dental habits, although currently the points cannot be used for anything.
+Connected and gamified toothbrushes have been around for a while, with some even offering rewards. The Beam Brush lets you buy movie tickets and clothes with your points and only costs $50.
+Compared to other smart brushes, the $200 FlexCare is on the pricier side, excluding the $400 smart toothbrush/camera combo Prophix. The most similar brush is the Oral-B SmartSeries toothbrush, which costs about $100 but doesn't give quite the extensive range of sensors and personal tips.
+Just because the FlexCare is the most feature-heavy toothbrush available doesn't mean the features are the best available or necessary to maintaining good oral health. It comes with an asking price that most people will pass over in favor of a cheap manual brush, or even a non-Bluetooth electric brush.
+Just because the technology exists doesn't necessarily mean it needs to be included.
+Have something to add to this story? Share it in the comments.

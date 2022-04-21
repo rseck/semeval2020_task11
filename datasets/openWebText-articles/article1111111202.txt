@@ -1,0 +1,36 @@
+5 pitfalls to avoid when starting to work with ZIO
+For someone like me, who has spent most of his professional career with OOP (C++, C#, and lastly Scala for the last few years), the pure functional programming style in Scala felt enticing.
+Because you work only with total functions, you gain a lot more confidence in your code. No more unexpected thrown exceptions. With referential transparency you gain easy refactoring and no surprising side-effects. Plus, you have local reasoning (just by looking at a function you know exactly what it does without knowledge of what happens before it).
+But until ZIO entered the scene, the entry barrier felt too daunting (i.e. tagless final with all those boiler plate LoC just to get some custom composable effects to work with).
+ZIO definitely looks much more straight forward than tagless final, including easy interop with Future , Try and Option , simplified dependency on external resources, and better tracing capabilities (this blog post offers a great intro to ZIO).
+It’s also much better for writing concurrent/asynchronous code than Scala’s Future. Checkout this awesome comparison of the two by John De Goes from the Scala Russia conference.
+I started using ZIO without being accustomed to pure functional style of descriptive values/types and lazily evaluated code. Naturally, there were some pitfalls I readily fell into that I hope you can avoid :)
+1. Writing two ZIO effects without mapping between them
+Take a look at the code below, if the condition is true, the console effect will not be executed. This is because there is no mapping between the two effect values, so only the last one is returned. As someone used to imperative coding style, writing stuff like this felt very natural to me. The compiler will not even warn you in this situation.
+The way to fix this is to add flatMap or better yet a *> , which is a variant of flatMap that ignores the value produced by the preceding effect.
+Another common mistake is to return a ZIO inside the yield part of a for comprehension. In the example below we are using a LegacyGame object with method start that returns a Unit .
+It is tempting to wrap start with ZIO.effect as is required usually, in order to turn a side-effect into a functional effect. But in case of yield there is no need to do that, actually it would be incorrect.
+The code inside yield is already effectful because a for comprehension is just syntactic sugar for a sequence of flatMap s (the “arrow” statements) followed by a map (The yield part). That means the yield just maps ZIO[_,_,A] to ZIO[_,_,B] .
+If we return a ZIO.effect inside a yield we actually end up returning ZIO[_,_,ZIO[B]] which means the Runtime will not be able to get the B value. In our case the LegacyGame will not start!
+ZIO has amazing concurrency abilities that are built on fibers, which are lightweight “green threads” implemented by the ZIO runtime system. One of these abilities, is to schedule repeating work.
+Because it’s so easy to use these powerful abilities, you sometimes forget that you want these async operations to run on their own fibers in order to not block the current work you are doing on the current fiber.
+In the code example below you could see that cleanupResources method is scheduled to run each 5 seconds. Without adding .fork , the next effect, service.startAndWait will never execute, because the scheduled task is hogging the current fiber.
+cleanupResources is running on current fiber, blocking the rest
+Below you could see the simple fix inside the for comprehension. now cleanupResources and service.startAndWait will each run on its own fiber.
+cleanupResource is scheduled to run on its own fiber
+4. ZIO all the things (passing a ZIO collaborator)
+With high motivation to ZIO all the things, you create ZIO values all-over, including for collaborators, and end up with a rpc service that you pass a DAO collaborator to, wrapped in ZIO:
+Note that MyRpcService has legacy API, which requires the use of unsafeRun for interop.
+The DAO object is below. it includes a mutable collection of orders to allow us to keep track of the insert operations:
+The full code of the program can be found here.
+Let’s examine if our DAO is working properly, by calling service.newOrder twice:
+What’s going on? why is the amount of orders at the end 1 instead of 2?
+The answer is — lazy evaluation of instantiation on each call. The rpc endpoint code is executed inside a ZIO runtime. Only once the end point is called, does the runtime interpret the DAO collaborator ZIO value that was passed to the RPC service.
+Only then, does the underlying DAO object gets instantiated:
+The solution is to pass the DAO object without the ZIO wrapper, such that it will only get instantiated once in an eager fashion.
+A basic rule of thumb is: a method should never accept a ZIO value parameter, it should only return it.
+Another option is to pass it inside a zio.Ref object, but usually this is redundant overhead.
+ZIO comes out-of-the-box with two thread-pools. One for asynchronous or short synchronous code and the other for synchronous blocking code. you can read more about it here.
+Usually, one would wrap side-effects in ZIO using effect method.
+But in case you have a blocking IO call. e.g. sending a request to a DB over JDBC:
+Doing this can negatively impact the performance of your application.

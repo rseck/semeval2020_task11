@@ -1,0 +1,12 @@
+One misstep from developers at Starbucks left exposed an API key that could be used by an attacker to access internal systems and manipulate the list of authorized users.
+The severity rating of the vulnerability was set to critical as the key allowed access to a Starbucks JumpCloud API.
+Vulnerability hunter Vinoth Kumar found the key in a public GitHub repository and disclosed it responsibly through the HackerOne vulnerability coordination and bug bounty platform.
+JumpCloud is an Active Directory management platform billed as an Azure AD alternative. It provides user management, web app single sign-on (SSO) access control, and Lightweight Directory Access Protocol (LDAP) service.
+Kumar reported the oversight on October 17 and close to three weeks later Starbucks responded it demonstrated "significant information disclosure" and that it qualified for a bug bounty.
+Starbucks took care of the problem much sooner, though as Kumar noted on October 21 that the repository had been removed and the API key had been revoked.
+The company took longer to respond because they needed to "to make sure we understand the severity of the issue and that all appropriate remediation steps have been taken."
+Along with identifying the GitHub repository and specifying the file hosting the API key, Kumar also provided proof-of-concept (PoC) code demonstrating what an attacker could do with the key.
+Apart from listing systems and users, adversaries could also take control of the Amazon Web Services (AWS) account, execute commands on systems, and add or remove users with access to the internal systems.
+Once Starbucks was content with the remediation steps taken, the company paid Kumar a $4,000 bounty for the disclosure, which is the maximum reward for critical vulnerabilities. Most bounties from Starbucks are between $250-$375.
+The company solved 834 reports since launching the bug bounty program in 2016, and 369 of them were reported in the past three months. For them, Starbucks spent $40,000.
+Another significant vulnerability reported to Starbucks this year is an oversight that could be leveraged to take control of a company subdomain. The issue was that a subdomain pointed to an Azure cloud host that had been abandoned. Starbucks paid $2,000 for the report.

@@ -1,0 +1,11 @@
+Now playing: Watch this: Millions of Twitter accounts allegedly for sale
+A hacker with links to the alleged sale of LinkedIn and MySpace data is apparently trying to sell similar information regarding Twitter users.
+A Russian hacker, who goes by the name Tessa88, claimed on Tuesday to be in possession of a cache containing email addresses, passwords and usernames of 379 million Twitter accounts, reports ZDNet. It's unclear how the hacker came in possession of the information.
+LeakedSource estimated on Wednesday the real number of accounts was just under 33 million, roughly 10 percent of Twitter's monthly active users.
+Twitter said Wednesday the data hadn't come from a breach and was working with users to protect their accounts.
+"We are confident that these usernames and credentials were not obtained by a Twitter data breach - our systems have not been breached," a spokeswoman said in a statement. "We've been working to help keep accounts protected by checking our data against what's been shared from recent other password leaks."
+Tessa88 is selling the database for 10 bitcoins, or roughly $5,810, AU$7,770 and £4,000, according to ZDNet. The publication also reported the seller had links to the recent breaches of LinkedIn and MySpace.
+"Millions of people have become infected by malware, and the malware sent every saved username and password from browsers like Chrome and Firefox back to the hackers from all websites including Twitter," LeakedSource hypothesized in a blog post.
+The alleged sale of the data follows the hacking of high-profile Twitter accounts, like those of Facebook CEO Mark Zuckerberg and pop star Katy Perry, who has the most followers of anyone on the social media platform.
+Michael Coates, Twitter's head of information security, said in tweet Wednesday the company securely stored passwords and was investigating the alleged sale.
+Updated June 9 at 10:36 a.m. PT: Adds comments from Twitter.

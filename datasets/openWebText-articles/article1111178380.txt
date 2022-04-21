@@ -1,0 +1,15 @@
+On Wednesday, Salesforce.com (CRM) announced the acquisition of Demandware (DWRE) for $2.8 billion, its biggest acquisition yet.
+Salesforce.com, a giant in the cloud computing space, has become the dominant force in customer relationship management with a focus on marketing and customer service.
+But this latest acquisition may make it the solution for brick-and-mortar retail woes.
+Until the Demandware acquisition, Salesforce.com had a gap in its overall product portfolio—it didn’t offer the ability to transact with customers yet. This acquisition allows them to do that.
+“This is a natural extension and within the customer management space,” according to Brean Capital’s Yun Kim.
+According to Gartner, worldwide spending on digital commerce platforms is expected to grow at over 14% annually, reaching $8.5 billion by 2020.
+“Our customers are trying to connect with their customers in a whole new way,” said Salesforce Chairman and CEO Marc Benioff said in the company’s press release this morning.
+“The number one trend in the retailing vertical is omnichannel,” Kim said.
+Omnichannel, or the ability to market, sell, transact and service customers across multiple channels–including web, mobile, and brick and mortar stores—is key for retailers to survive in the intensely competitive and rapidly evolving retail space, Kim said.
+“They need to accelerate their investments in omnichannel so they don’t get ‘Amazoned,’” Kim added.
+Kim noted that retail brick and mortar does have one leg up that Amazon doesn’t have: retail stores. If they use it correctly with online, the in-store experience can be a powerful tool.
+Integrated store and online solutions have worked well at Home Depot (HD), for example.
+What Demandware provides is “distributed order management,” which looks at the inventory level in the store and across other stores and warehouses and understands where the inventory levels are at different regions.
+“There are other vendors providing these types of retail focused solutions,” Kim said. “But Salesforce brings the overall holistic view around servicing the customer by providing not only the ability to transact but also tying that with marketing and customer service as well. There’s no other vendor out there.”
+The large 55% premium suggests that other companies may have wanted to buy them, including potentially SAP (SAP), Oracle (ORCL) and IBM (IBM) according to Kim.ZXSW

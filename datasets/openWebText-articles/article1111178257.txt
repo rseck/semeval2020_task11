@@ -1,0 +1,4 @@
+If you are not a professional programmer or an expert in databases, you can use Jam.py to store, share and analyze your data.
+Please watch these videos to see how easy it is to create and setup Jam.py applications.
+Creating CRM web database applications from start to finish in 7 minutes with Jam.py
+Setting up interface of Jam.py application using Forms Dialogs

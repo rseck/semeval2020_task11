@@ -1,0 +1,3 @@
+Kroxa, Titan of Death's Hunger BR Legendary Creature - Elder Giant When Kroxa enters the battlefield, sacrifice it unless it escaped.
+Whenever Kroxa enters the battlefield or attacks, each opponent discards a card, then each opponent who didn't discard a nonland card this way loses 3 life.
+Escape-BBRR, Exile five other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)

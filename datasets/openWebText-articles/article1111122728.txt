@@ -1,0 +1,3 @@
+Sedo automatically bids on your behalf up to your maximum bid.
+You can place an offer below the seller's listing price, however the seller will only respond if they are interested in negotiating based on this offer.
+Any offer you submit is binding for seven (7) days.

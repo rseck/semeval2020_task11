@@ -1,0 +1,17 @@
+I go through phases with my writing. Sometimes I feel like every second sentence needs to start with “but,” then I start using “however,” which becomes “nevertheless,” and on and on it goes until the bad habit stops.
+For times like those, it’s handy to use a word frequency tool to understand how often I’m using problem words. Here are two ways to get that done. One is easy and the other is a little advanced.
+The easiest way to get a sense of how often you’re using certain words in an article, essay, or report is to use an online app. These sites let you copy and paste your text into the site, hit the count button and it spits out a report.
+There are many of these web apps, but one I like is called Text Fixer. Just paste your text into the area under the heading Word Analysis Tool and then hit the Count Words button. The word count report will appear below the text entry box.
+There aren’t really any features or settings you can tweak. The one thing you can do is set the checkbox that says Exclude common words from word frequency count. Generally, I uncheck this since overuse of common words like “but” is exactly what I’m looking to eradicate.
+Okay, roll up your sleeves folks. We’re installing an Office add-in today, which means diving deep into your Windows user folder. Add-ins are a little more complicated than installing a program, but once you know how to do it, it’s really not that hard.
+Here’s how I did it on Windows 8.1 with Microsoft Office 2013.
+First, we need to be able to see our hidden folders, so hit Windows key + E to open File Explorer. Next, click the View tab and make sure the Hidden items box is checked.
+Next, download the add-in files from developer Gregory Maxey. The links to the add-ins are at the bottom of the page.
+What you’ve downloaded is a ZIP file with two files inside: one is a .dot file and the other is .dotm. Extract the .dotm file for Word 2007 and up. Right-click it and select Copy from the contextual menu.
+Now, let’s go back to File Explorer and get ready for action. Navigate to C:Users[username]AppDataRoamingMicrosoftWordSTARTUP . Right-click the main folder area and select Paste to drop the file in.
+Now, start-up Word and open a file you’d like to check out. You may get a warning that Word has disabled macros because of the new file you just added. If that happens, just hit the button to re-enable them.
+On a side note, only install add-in files from developers you trust as doing so allows third-party code to run on your documents.
+Once Word is up and running, you should see a new tab at the top of the Word menu that says ADD-INS—similar to what you see above.
+Click that tab and you’ll see menu item for word usage. Select it and a pop-up appears with a bunch of options that are all straightforward tweaks you can make to the frequency report.
+Once you’re ready to go, click OK and your word frequency report will appear as a new document—unless you changed that setting.
+That’s about all there is to setting up the add-in. Enjoy your word frequency counting!

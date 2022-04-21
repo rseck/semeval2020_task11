@@ -1,0 +1,4 @@
+Our activities over the weekend went well, and after a couple of complicated multi-sol plans we get to do a nice simple one-sol plan today! The Sol 1358 plan starts with ChemCam observations of the targets “Otiiha”, “Otjihase”, “Otjikoto”, and “Otjimbingwe” to assess variations in the bedrock chemistry. Mastcam will document those targets, and then we will dump out our remaining Okoruso sample. APXS then has an overnight observation of the target “Oudam”.
+I was on downlink for ChemCam today, so while everyone was putting together the plan for today, I was busy analyzing the tons of great data that we got down over the long weekend!
+-Ryan is a planetary scientist at the USGS Astrogeology Science Center and a member of the ChemCam team on MSL.
+Dates of planned rover activities described in these reports are subject to change due to a variety of factors related to the martian environment, communication relays and rover status

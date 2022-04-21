@@ -1,0 +1,6 @@
+LIVE 11 USERS PLEASE NOTE: Any MPE data in a clip will get erased when you edit it in “MultiClip / MIDI Modulators.” It definitely runs in Live 11 and can do everything just as Live 9 and 10 can. It’s just not a device designed to use MPE.
+Welcome to MultiClip MIDI Editor, a MaxforLive device that allows you to edit multiple MIDI clips in Ableton Live simultaneously in the same window!
+A lot of workflow mechanics are similar to Lives MIDI editor, you won’t have to relearn anything, in fact this is probably the easiest learning curve of any device yet…
+Whilst we await eagerly any news of Ableton Live 10 we’ve thought of a few new feature improvements and implemented them within the MultiClip MIDI Editor such as a second pencil tool, which creates a longer note instead of a couple of shorter ones and the ability to hide pitches that aren’t included in a specific scale.
+With the settings configuration so you can save all your own preferences your workflow just got boosted to light speed!
+And with the latest version we’ve also enhanced the MIDI Editor functionality taking our inspiration from other DAW’s like Cubase and Logic. Simply select some notes and use your chosen MIDI Modulator:

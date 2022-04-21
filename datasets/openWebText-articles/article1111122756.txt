@@ -1,0 +1,1 @@
+Checks existence of queued users at the start of video playback, and delete queue of user if they don't exist consecutively for specified # of times. Set to 0 for no limit

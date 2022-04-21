@@ -1,0 +1,1 @@
+3D Look up tables, also known as LUTs or Looks are small files that act like a digital camera ‘filter’ that you can apply to your footage in nearly any color grading suite or non-linear editor. SmallHD has now pioneered bringing LUTs into the field with the 500 and 700-series monitors- details below:

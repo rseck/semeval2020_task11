@@ -4,7 +4,7 @@ numpy
 joblib==0.13.2
 nltk==3.4.5
 ConfigArgParse==1.0
-sklearn_crfsuite==0.3.6
+sklearn_crfsuite
 seqeval==0.0.5
 spacy==2.2.3
 Unidecode==1.1.1

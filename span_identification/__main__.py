@@ -1,9 +1,9 @@
 try:
-    from .ner import transformers_ner_crf, transformers_ner
+    from .ner import transformers_ner_crf
     from .dataset import load_data, get_train_dev_files, get_test_file, create_subfolder
     from .submission import get_submission_format
 except:
-    from ner import transformers_ner_crf, transformers_ner
+    from ner import transformers_ner_crf
     from dataset import load_data, get_train_dev_files, get_test_file, create_subfolder
     from submission import get_submission_format
     

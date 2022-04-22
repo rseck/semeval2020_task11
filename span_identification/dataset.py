@@ -102,7 +102,7 @@ def create_BIO_labeled(file, data, articles_content_dict, nlp, seq_length):
                             label = 'B-' + 'PROP'
                     f.write(tok + '\t' + label + '\n')
                     seq_count = seq_count + 1
-                    if seq_count > seq_length:
+                    if seq_count >= (seq_length - 30):
                         f.write('\n')
                         seq_count = 0
                     prev_label = label
@@ -135,7 +135,7 @@ def create_BIO_unlabeled(file, articles_id, articles_content, nlp, seq_length):
                     label = 'O'
                     f.write(tok + '\t' + label + '\n')
                     seq_count = seq_count + 1
-                    if seq_count > seq_length:
+                    if seq_count >= (seq_length-30):
                         f.write('\n')
                         seq_count = 0
                     #prev_label = label

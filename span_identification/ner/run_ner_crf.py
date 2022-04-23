@@ -43,9 +43,6 @@ from scipy.special import softmax
 
 logger = logging.getLogger(__name__)
 
-ALL_MODELS = sum(
-    (tuple(conf.pretrained_config_archive_map.keys()) for conf in (BigBirdConfig)),
-    ())
 
 MODEL_CLASSES = {
     "bigbird": (BigBirdConfig, BigBirdForTokenClassification, BigBirdTokenizer)

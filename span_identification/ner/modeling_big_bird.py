@@ -47,6 +47,7 @@ from transformers.utils import (
     replace_return_docstrings,
 )
 from transformers.models.big_bird.configuration_big_bird import BigBirdConfig
+from transformers.models.big_bird import BigBirdTokenizer
 
 
 logger = logging.get_logger(__name__)

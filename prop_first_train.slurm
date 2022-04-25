@@ -9,4 +9,4 @@
 #SBATCH --ntasks=1
 #SBATCH --gpus=1
 
-srun python -m span_identification --config configs/si_config.yml --do_train --model_name_or_path bigbird --use_crf --overwrite_output_dir --overwrite_cache
+srun python -m span_identification --config configs/si_config.yml --do_train --model_name_or_path google/bigbird-roberta-large --use_crf --overwrite_output_dir --overwrite_cache

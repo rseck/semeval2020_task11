@@ -14,3 +14,4 @@ ipython
 ptvsd
 scikit_learn
 tensorboardX
+SentencePiece

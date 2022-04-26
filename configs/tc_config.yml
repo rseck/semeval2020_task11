@@ -3,7 +3,7 @@
 propaganda_techniques_file: tools/data/propaganda-techniques-names-semeval2020task11.txt
 train_data_folder: datasets/train-articles
 #test_data_folder: datasets/train-articles
-test_data_folder: datasets/dev-articles
+test_data_folder: datasets/test-articles
 #test_data_folder: datasets/test/test-articles
 labels_path: datasets/train-task2-TC.labels
 #test_template_labels_path: results/mydev-task-TC.labelss

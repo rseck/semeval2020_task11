@@ -1,7 +1,7 @@
 ---------------dataset params---------------
 
 train_data_folder: datasets/train-articles
-test_data_folder: datasets/dev-articles
+test_data_folder: datasets/test-articles
 labels_path: datasets/train-task1-SI.labels
 gold_annot_file: results/dev-task-SI.labels
 propaganda_techniques_file: tools/data/propaganda-techniques-names-semeval2020task11.txt

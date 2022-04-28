@@ -1,10 +1,10 @@
-src_f_path = 'test_predictions.txt'
+src_f_path = '/Users/roeeesquira/Study/מדעי המחשב/עיבוד שפה טבעית/final proj/silver/test_predictions.txt'
 dst_f_path = 'silver_predictions.tsv'
 
 src_f = open(src_f_path, 'r')
 dst_f = open(dst_f_path, 'w')
 
-max_seq = 250
+max_seq = 450
 
 seq_len = 0
 for line in src_f:

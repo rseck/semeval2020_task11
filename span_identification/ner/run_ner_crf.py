@@ -131,9 +131,10 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
             batch = tuple(t.to(args.device) for t in batch)
             inputs = {"input_ids": batch[0],
                       "attention_mask": batch[1],
-                      "labels": batch[3],
-                      "ner_embeddings": batch[4],
-                      "pos_embeddings": batch[5]
+                      "labels": batch[3]
+                # ,
+                #       "ner_embeddings": batch[4],
+                #       "pos_embeddings": batch[5]
                       }
             if args.model_type != "distilbert":
                 inputs["token_type_ids"] = batch[2] if args.model_type in ["bert", "xlnet"] else None  # XLM and RoBERTa don"t use segment_ids
@@ -231,9 +232,11 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
         with torch.no_grad():
             inputs = {"input_ids": batch[0],
                       "attention_mask": batch[1],
-                      "labels": batch[3],
-                      "ner_embeddings": batch[4],
-                      "pos_embeddings": batch[5]}
+                      "labels": batch[3]
+                # ,
+                #       "ner_embeddings": batch[4],
+                #       "pos_embeddings": batch[5]
+            }
             if args.model_type != "distilbert":
                 inputs["token_type_ids"] = batch[2] if args.model_type in ["bert", "xlnet"] else None  # XLM and RoBERTa don"t use segment_ids
             outputs = model(**inputs)
@@ -306,23 +309,23 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
         logger.info("Creating features from dataset file at %s", args.data_dir)
         files = {'train': args.train_file, 'dev': args.dev_file, 'test': args.test_file}
 
-        logger.info("importing NE and POS embeddings from pickle file at %s",
-                    os.path.join(args.data_dir, 'embeddings', files[mode]))
-        embeddings = pickle.load(open(os.path.join(args.data_dir, 'embeddings', mode + ".p"), "rb"))
-
-        num_sent = len(embeddings)
-        sent_len = len(embeddings[0][0])
-        vec_dim = embeddings[0][0][0].shape[0]
-        all_ner_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
-        all_pos_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
-
-        ner_sentences_arr = []
-        pos_sentences_arr = []
-        for embed in embeddings:
-            ner_sent_embed = embed[0]
-            pos_sent_embed = embed[1]
-            ner_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in ner_sent_embed]
-            ner_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
+        # logger.info("importing NE and POS embeddings from pickle file at %s",
+        #             os.path.join(args.data_dir, 'embeddings', files[mode]))
+        # embeddings = pickle.load(open(os.path.join(args.data_dir, 'embeddings', mode + ".p"), "rb"))
+        #
+        # num_sent = len(embeddings)
+        # sent_len = len(embeddings[0][0])
+        # vec_dim = embeddings[0][0][0].shape[0]
+        # all_ner_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
+        # all_pos_embeddings = torch.Tensor(num_sent, sent_len, vec_dim).cpu()
+        #
+        # ner_sentences_arr = []
+        # pos_sentences_arr = []
+        # for embed in embeddings:
+        #     ner_sent_embed = embed[0]
+        #     pos_sent_embed = embed[1]
+        #     ner_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in ner_sent_embed]
+        #     ner_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
             # print('ner_sent_tensor')
             # print(ner_sent_tensor.get_device())
             # print(ner_sent_tensor)
@@ -332,13 +335,13 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
             # print('ner_sent_arr[250]')
             # print(ner_sent_arr[250].get_device())
             # print(ner_sent_arr[250])
-            torch.cat(ner_sent_arr, out=ner_sent_tensor)
-            ner_sentences_arr.append(torch.unsqueeze(ner_sent_tensor, 0))
-            #
-            pos_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in pos_sent_embed]
-            pos_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
-            torch.cat(pos_sent_arr, out=pos_sent_tensor)
-            pos_sentences_arr.append(torch.unsqueeze(pos_sent_tensor, 0).cpu())
+            # torch.cat(ner_sent_arr, out=ner_sent_tensor)
+            # ner_sentences_arr.append(torch.unsqueeze(ner_sent_tensor, 0))
+            # #
+            # pos_sent_arr = [torch.unsqueeze(word, 0).cpu() for word in pos_sent_embed]
+            # pos_sent_tensor = torch.Tensor(sent_len, vec_dim).cpu()
+            # torch.cat(pos_sent_arr, out=pos_sent_tensor)
+            # pos_sentences_arr.append(torch.unsqueeze(pos_sent_tensor, 0).cpu())
             # print('pos_sent_tensor')
             # print(pos_sent_tensor.get_device())
             # print(pos_sent_tensor)
@@ -354,8 +357,8 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
         # print(all_ner_embeddings.shape)
         # print(all_ner_embeddings)
 
-        torch.cat(ner_sentences_arr, out=all_ner_embeddings)
-        torch.cat(pos_sentences_arr, out=all_pos_embeddings)
+        # torch.cat(ner_sentences_arr, out=all_ner_embeddings)
+        # torch.cat(pos_sentences_arr, out=all_pos_embeddings)
 
         examples = read_examples_from_file(os.path.join(args.data_dir, files[mode]), mode)
         features = convert_examples_to_features(examples, labels, args.max_seq_length, tokenizer,
@@ -407,8 +410,8 @@ def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
     # print(all_input_ids.get_device())
     # print(all_input_ids)
 
-    dataset = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids,
-                            all_ner_embeddings, all_pos_embeddings)
+    dataset = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids)
+                            # all_ner_embeddings, all_pos_embeddings)
     return dataset
 
 

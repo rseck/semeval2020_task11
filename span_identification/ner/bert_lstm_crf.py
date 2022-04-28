@@ -74,11 +74,11 @@ class BertLstmCrf(nn.Module):
 
         self.output_dropout = nn.Dropout(p=output_dropout)
 
-        self.mean_pooling_layer = nn.AdaptiveAvgPool1d(mean_pooling_layer_output_size)
-
-        self.fc1 = nn.Linear(1124, 200)
-        self.non_linear = nn.ReLU()
-        self.fc2 = nn.Linear(200, num_labels)
+        # self.mean_pooling_layer = nn.AdaptiveAvgPool1d(mean_pooling_layer_output_size)
+        #
+        # self.fc1 = nn.Linear(1124, 200)
+        # self.non_linear = nn.ReLU()
+        # self.fc2 = nn.Linear(200, num_labels)
 
     def rand_init_hidden(self, batch_size):
         """
@@ -123,14 +123,14 @@ class BertLstmCrf(nn.Module):
         batch_size = kwargs["input_ids"].size(0)
         seq_length = kwargs["input_ids"].size(1)
 
-        ner_embeddings = kwargs.pop("ner_embeddings").cuda()
-        pos_embeddings = kwargs.pop("pos_embeddings").cuda()
+        # ner_embeddings = kwargs.pop("ner_embeddings").cuda()
+        # pos_embeddings = kwargs.pop("pos_embeddings").cuda()
 
         # print('pre pooling: ner_embeddings[0, :]')
         # print(ner_embeddings.shape)
         # print(ner_embeddings[0, :])
 
-        ner_embeddings = self.mean_pooling_layer(ner_embeddings)
+        # ner_embeddings = self.mean_pooling_layer(ner_embeddings)
         # print('post pooling: ner_embeddings[0, :]')
         # print(ner_embeddings.shape)
         # print(ner_embeddings[0, :])
@@ -139,7 +139,7 @@ class BertLstmCrf(nn.Module):
         # print(pos_embeddings.shape)
         # print(pos_embeddings[0, :])
 
-        pos_embeddings = self.mean_pooling_layer(pos_embeddings)
+        # pos_embeddings = self.mean_pooling_layer(pos_embeddings)
         # print('post pooling: pos_embeddings[0, :]')
         # print(pos_embeddings.shape)
         # print(pos_embeddings[0, :])
@@ -175,16 +175,16 @@ class BertLstmCrf(nn.Module):
         # print(bert_outputs[2][-1].shape)
         # print(bert_outputs[2][-1])
         last_layer = bert_outputs[2][-1]
-        full_input = torch.cat((last_layer, pos_embeddings, ner_embeddings), dim=2)
+        # full_input = torch.cat((last_layer, pos_embeddings, ner_embeddings), dim=2)
         # print('full_input.shape')
         # print(full_input.shape)
-        out = self.fc1(full_input)
-        out = self.non_linear(out)
-        out = self.fc2(out)
+        # out = self.fc1(full_input)
+        # out = self.non_linear(out)
+        # out = self.fc2(out)
         # print('out')
         # print(out.shape)
         # print(out)
-        # out = sequence_output
+        out = sequence_output
         # print('sequence_output')
         # print(sequence_output.shape)
         # print(sequence_output)
